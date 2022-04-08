@@ -94,7 +94,7 @@ class BlogController extends StorefrontController
 
         $dateTime = new \DateTime();
 
-        $criteria->addAssociations(['author.salutation']);
+        $criteria->addAssociations(['blogAuthor.salutation']);
 
         $criteria->addFilter(
             new EqualsFilter('active', true),

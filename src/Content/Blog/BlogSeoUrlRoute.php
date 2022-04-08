@@ -33,7 +33,7 @@ class BlogSeoUrlRoute implements SeoUrlRouteInterface
     {
         $criteria->addAssociations([
             'blogCategories',
-            'author',
+            'blogAuthor',
         ]);
     }
 

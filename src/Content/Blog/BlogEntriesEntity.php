@@ -2,17 +2,50 @@
 
 namespace Sas\BlogModule\Content\Blog;
 
+use Sas\BlogModule\Content\Blog\BlogEntriesTranslation\BlogEntriesTranslationCollection;
 use Sas\BlogModule\Content\Blog\BlogTranslation\BlogTranslationCollection;
 use Sas\BlogModule\Content\BlogAuthor\BlogAuthorEntity;
 use Sas\BlogModule\Content\BlogCategory\BlogCategoryCollection;
 use Shopware\Core\Content\Cms\CmsPageEntity;
 use Shopware\Core\Content\Media\MediaEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityCustomFieldsTrait;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
 class BlogEntriesEntity extends Entity
 {
     use EntityIdTrait;
+    use EntityCustomFieldsTrait;
+
+    /**
+     * @var string|null
+     */
+    protected $title;
+
+    /**
+     * @var string|null
+     */
+    protected $slug;
+
+    /**
+     * @var string|null
+     */
+    protected $teaser;
+
+    /**
+     * @var string|null
+     */
+    protected $metaTitle;
+
+    /**
+     * @var string|null
+     */
+    protected $metaDescription;
+
+    /**
+     * @var string|null
+     */
+    protected $content;
 
     /**
      * @var string|null
@@ -72,7 +105,17 @@ class BlogEntriesEntity extends Entity
     /**
      * @var BlogAuthorEntity|null
      */
-    protected $author;
+    protected $blogAuthor;
+
+    /**
+     * @var string
+     */
+    protected $mediaId;
+
+    /**
+     * @var MediaEntity|null
+     */
+    protected $media;
 
     /**
      * @var string
@@ -169,14 +212,14 @@ class BlogEntriesEntity extends Entity
         $this->authorId = $authorId;
     }
 
-    public function getAuthor(): ?BlogAuthorEntity
+    public function getBlogAuthor(): ?BlogAuthorEntity
     {
-        return $this->author;
+        return $this->blogAuthor;
     }
 
-    public function setAuthor(BlogAuthorEntity $author): void
+    public function setBlogAuthor(BlogAuthorEntity $blogAuthor): void
     {
-        $this->author = $author;
+        $this->blogAuthor = $blogAuthor;
     }
 
     public function getActive(): bool
@@ -199,7 +242,7 @@ class BlogEntriesEntity extends Entity
         $this->detailTeaserImage = $detailTeaserImage;
     }
 
-    public function getTranslations(): ?BlogTranslationCollection
+    public function getTranslations(): ?BlogEntriesTranslationCollection
     {
         return $this->translations;
     }

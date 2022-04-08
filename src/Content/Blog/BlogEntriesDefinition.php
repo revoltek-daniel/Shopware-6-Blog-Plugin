@@ -3,7 +3,7 @@
 namespace Sas\BlogModule\Content\Blog;
 
 use Sas\BlogModule\Content\Blog\Aggregate\BlogCategoryMappingDefinition;
-use Sas\BlogModule\Content\Blog\BlogTranslation\BlogTranslationDefinition;
+use Sas\BlogModule\Content\Blog\BlogEntriesTranslation\BlogEntriesTranslationDefinition;
 use Sas\BlogModule\Content\BlogAuthor\BlogAuthorDefinition;
 use Sas\BlogModule\Content\BlogCategory\BlogCategoryDefinition;
 use Shopware\Core\Content\Cms\CmsPageDefinition;
@@ -72,9 +72,9 @@ class BlogEntriesDefinition extends EntityDefinition
             (new TranslatedField('content'))->addFlags(new ApiAware(), new SearchRanking(SearchRanking::MIDDLE_SEARCH_RANKING)),
             (new TranslatedField('customFields'))->addFlags(new ApiAware()),
 
-            (new DateField('published_at', 'publishedAt'))->addFlags(new Required(), new ApiAware()),
+             (new DateField('published_at', 'publishedAt'))->addFlags(new Required(), new ApiAware()),
 
-            (new TranslationsAssociationField(BlogTranslationDefinition::class, 'sas_blog_entries_id'))->addFlags(new Required()),
+            (new TranslationsAssociationField(BlogEntriesTranslationDefinition::class, 'sas_blog_entries_id'))->addFlags(new Required()),
 
             (new ManyToManyAssociationField('blogCategories', BlogCategoryDefinition::class, BlogCategoryMappingDefinition::class, 'sas_blog_entries_id', 'sas_blog_category_id'))->addFlags(new CascadeDelete(), new ApiAware(), new SearchRanking(SearchRanking::ASSOCIATION_SEARCH_RANKING)),
             (new ManyToOneAssociationField('author', 'author_id', BlogAuthorDefinition::class, 'id', false))->addFlags(new ApiAware(), new SearchRanking(SearchRanking::ASSOCIATION_SEARCH_RANKING)),
