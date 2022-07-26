@@ -131,7 +131,7 @@
                 required
                 v-model="blog.authorId"
                 labelProperty="translated.name"
-                class="sas-blog-author-base-form__salutation-select"
+                class="sas-field--author"
                 entity="sas_blog_author"
                 :label="$tc('sas-blog.detail.author.label')"
                 :placeholder="$tc('sas-blog.detail.author.placeholder')"
@@ -150,7 +150,7 @@
             <sas-blog-category-tree-field
                 required
                 v-model="blog.blogCategories"
-                class="sw-product-detail__select-category"
+                class="sas-field--category"
                 :label="$tc('sas-blog.detail.category.label')"
                 :placeholder="$tc('sas-blog.detail.category.placeholder')"
                 :error="blogBlogCategoriesError"

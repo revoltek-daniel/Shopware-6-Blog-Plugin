@@ -25,6 +25,16 @@ clean: ## Cleans all dependencies
 	rm -rf ./src/Resources/app/administration/node_modules/*
 	rm -rf ./src/Resources/app/administration/package-lock.json
 
+build: ## Installs the plugin, and builds the artifacts using the Shopware build commands (requires Shopware)
+	cd /var/www/html && php bin/console plugin:refresh
+	cd /var/www/html && php bin/console plugin:install SasBlogModule --activate | true
+	cd /var/www/html && php bin/console plugin:refresh
+	cd /var/www/html && php bin/console theme:dump
+	cd /var/www/html && ./bin/build-js.sh
+	cd /var/www/html && php bin/console theme:refresh
+	cd /var/www/html && php bin/console theme:compile
+	cd /var/www/html && php bin/console theme:refresh
+
 admin: ## Installs all admin dependencies
 	cd vendor/shopware/administration/Resources/app/administration && npm install
 

@@ -5,7 +5,8 @@
             "slug",
             "teaser",
             "authorId",
-            "publishedAt"
+            "publishedAt",
+            "blogCategories"
         ]
     }
 }
