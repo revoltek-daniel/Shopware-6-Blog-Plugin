@@ -38,6 +38,7 @@ import enGB from './snippet/en-GB.json';
 import './blocks/listing';
 import './blocks/detail';
 import './blocks/single-entry';
+import './blocks/newest-listing';
 
 /**
  * CMS Elements
@@ -45,6 +46,7 @@ import './blocks/single-entry';
 import './elements/blog-detail';
 import './elements/blog';
 import './elements/blog-single-select';
+import './elements/blog-newest-listing';
 
 /**
  * Blog Category
