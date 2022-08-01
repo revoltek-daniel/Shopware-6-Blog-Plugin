@@ -3,7 +3,7 @@
 namespace Sas\BlogModule\Migration;
 
 use Doctrine\DBAL\Connection;
-use Sas\BlogModule\SasBlogModule;
+use Sas\BlogModule\MeSasBlogModule;
 use Shopware\Core\Defaults;
 use Shopware\Core\Framework\Migration\MigrationStep;
 use Shopware\Core\Framework\Uuid\Uuid;
@@ -60,7 +60,7 @@ class Migration1605031477CreateSasBlogAuthorTable extends MigrationStep
         $defaultAuthorId = $connection->fetchOne('SELECT id from sas_blog_author LIMIT 1');
 
         if (empty($defaultAuthorId)) {
-            $defaultAuthorId = Uuid::fromHexToBytes(SasBlogModule::ANONYMOUS_AUTHOR_ID);
+            $defaultAuthorId = Uuid::fromHexToBytes(MeSasBlogModule::ANONYMOUS_AUTHOR_ID);
 
             $connection->insert('sas_blog_author', [
                 'id'            => $defaultAuthorId,

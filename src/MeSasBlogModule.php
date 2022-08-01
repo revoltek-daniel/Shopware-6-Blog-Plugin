@@ -18,7 +18,7 @@ use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Core\Framework\Plugin\Context\UpdateContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 
-class SasBlogModule extends Plugin
+class MeSasBlogModule extends Plugin
 {
     public const ANONYMOUS_AUTHOR_ID = '64f4c60194634128b9b85d9299797c45';
 

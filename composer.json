@@ -1,5 +1,5 @@
 {
-    "name": "sas/blog-module",
+    "name": "me-sas/blog-module",
     "description": "Blog Module",
     "version": "1.5.8",
     "type": "shopware-platform-plugin",
@@ -39,7 +39,7 @@
         "squizlabs/php_codesniffer": "^3.6"
     },
     "extra": {
-        "shopware-plugin-class": "Sas\\BlogModule\\SasBlogModule",
+        "shopware-plugin-class": "MeSasBlogModule",
         "plugin-icon": "src/Resources/config/plugin.png",
         "copyright": "(c) by SMK Shape & Shift LTD",
         "label": {
