@@ -1,3 +1,6 @@
+# 1.5.9
+* Add support for shopware 6.5 [#124](https://github.com/ChristopherDosin/Shopware-6-Blog-Plugin/pull/124/files)
+
 # 1.5.8
 * Newest blog items [#108](https://github.com/ChristopherDosin/Shopware-6-Blog-Plugin/pull/108/files)
 * Fix error when run bin/console dal:validation [#97](https://github.com/ChristopherDosin/Shopware-6-Blog-Plugin/pull/97/files)
