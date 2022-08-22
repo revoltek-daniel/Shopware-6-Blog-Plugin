@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("_routeScope"={"store-api"})
+ * @Route(defaults={"_routeScope"={"store-api"}})
  */
 class BlogController extends AbstractBlogController
 {
