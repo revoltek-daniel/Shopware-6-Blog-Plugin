@@ -11,7 +11,7 @@ use Sas\BlogModule\Content\Blog\BlogEntriesDefinition;
 use Sas\BlogModule\Content\Blog\BlogEntriesEntity;
 use Sas\BlogModule\Core\Content\Sitemap\Provider\BlogUrlProvider;
 use Shopware\Core\Content\Sitemap\Struct\UrlResult;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
@@ -20,7 +20,7 @@ class BlogUrlProviderTest extends TestCase
 {
     use ContextTrait;
 
-    private EntityRepositoryInterface $blogRepository;
+    private EntityRepository $blogRepository;
 
     private Connection $connection;
 

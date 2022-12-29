@@ -9,7 +9,7 @@ use Sas\BlogModule\Content\Blog\BlogEntriesDefinition;
 use Sas\BlogModule\Content\Blog\BlogEntriesEntity;
 use Sas\BlogModule\Page\Search\BlogSearchPage;
 use Sas\BlogModule\Page\Search\BlogSearchPageLoader;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\Framework\Routing\Exception\MissingRequestParameterException;
 use Shopware\Storefront\Page\GenericPageLoaderInterface;
@@ -22,7 +22,7 @@ class BlogSearchPageLoaderTest extends TestCase
 
     private GenericPageLoaderInterface $genericLoader;
 
-    private EntityRepositoryInterface $blogRepository;
+    private EntityRepository $blogRepository;
 
     public function setUp(): void
     {

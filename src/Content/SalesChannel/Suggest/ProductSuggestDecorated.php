@@ -5,7 +5,7 @@ namespace Sas\BlogModule\Content\SalesChannel\Suggest;
 use Shopware\Core\Content\Product\SalesChannel\Suggest\AbstractProductSuggestRoute;
 use Shopware\Core\Content\Product\SalesChannel\Suggest\ProductSuggestRouteResponse;
 use Shopware\Core\Framework\Context;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
@@ -19,13 +19,13 @@ class ProductSuggestDecorated extends AbstractProductSuggestRoute
 {
     private AbstractProductSuggestRoute $decorated;
 
-    private EntityRepositoryInterface $blogRepository;
+    private EntityRepository $blogRepository;
 
     private SystemConfigService $systemConfigService;
 
     public function __construct(
         AbstractProductSuggestRoute $decorated,
-        EntityRepositoryInterface $blogRepository,
+        EntityRepository $blogRepository,
         SystemConfigService $systemConfigService
     ) {
         $this->decorated = $decorated;

@@ -13,10 +13,7 @@ class BlogSeoUrlRoute implements SeoUrlRouteInterface
 {
     public const ROUTE_NAME = 'sas.frontend.blog.detail';
 
-    /**
-     * @var BlogEntriesDefinition
-     */
-    private $definition;
+    private BlogEntriesDefinition $definition;
 
     public function __construct(BlogEntriesDefinition $definition)
     {
@@ -32,7 +29,7 @@ class BlogSeoUrlRoute implements SeoUrlRouteInterface
         );
     }
 
-    public function prepareCriteria(Criteria $criteria): void
+    public function prepareCriteria(Criteria $criteria, SalesChannelEntity $salesChannel): void
     {
         $criteria->addAssociations([
             'blogCategories',

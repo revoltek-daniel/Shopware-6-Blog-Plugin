@@ -5,7 +5,7 @@ namespace BlogModule\Tests\Util;
 use BlogModule\Tests\Traits\ContextTrait;
 use PHPUnit\Framework\TestCase;
 use Sas\BlogModule\Util\Lifecycle;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Event\EntityWrittenContainerEvent;
 use Shopware\Core\Framework\Event\NestedEventCollection;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
@@ -16,12 +16,12 @@ class LifecycleTest extends TestCase
 
     private SystemConfigService $systemConfigService;
 
-    private EntityRepositoryInterface $cmsPageRepository;
+    private EntityRepository $cmsPageRepository;
 
     public function setUp(): void
     {
         $this->systemConfigService = $this->createMock(SystemConfigService::class);
-        $this->cmsPageRepository = $this->createMock(EntityRepositoryInterface::class);
+        $this->cmsPageRepository = $this->createMock(EntityRepository::class);
 
         $this->lifeCircle = new Lifecycle(
             $this->systemConfigService,
@@ -126,7 +126,7 @@ class LifecycleTest extends TestCase
      * - slot type
      * - slot name
      */
-    public function getCmsPageTestData(): array
+    public static function getCmsPageTestData(): array
     {
         return [
             'Test method createBlogListingCmsPageData' => [

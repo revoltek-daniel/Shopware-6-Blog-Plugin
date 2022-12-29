@@ -95,7 +95,7 @@ class SasCmsSlotsDataResolverTest extends TestCase
      * - expected number of calls for "setData" method
      * - expected number of calls for "resolve" method
      */
-    public function getTestData(): array
+    public static function getTestData(): array
     {
         return [
             'normal slot is skipped' => [

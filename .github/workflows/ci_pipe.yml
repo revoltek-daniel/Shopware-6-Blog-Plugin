@@ -126,42 +126,42 @@ jobs:
 
     # ------------------------------------------------------------------------------------------------------------------------
 
-    integration:
-        name: Integration Tests | Shopware ${{ matrix.shopware }}
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                shopware: [ '6.4.11.0', '6.4.7.0', '6.4.3.0', '6.4.0.0' ]
-        steps:
-
-            - name: Clone Code
-              uses: actions/checkout@v2
-
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: 7.4
-
-            - name: Install PROD Dependencies
-              run: make install -B
-
-            - name: Start Docker
-              run: |
-                  docker run --rm --name shop -d dockware/dev:${{ matrix.shopware }}
-                  sleep 30
-                  docker logs shop
-
-            - name: Upload into Docker
-              run: |
-                  docker cp $(pwd)/. shop:/var/www/html/custom/plugins/SasBlogModule
-                  docker exec shop bash -c 'sudo chown www-data:www-data /var/www/html/custom/plugins -R'
-
-            - name: Install and Build Plugin
-              run: |
-                  docker exec shop bash -c 'cd /var/www/html/custom/plugins/SasBlogModule && make clean'
-                  docker exec shop bash -c 'cd /var/www/html/custom/plugins/SasBlogModule && make install'
-                  docker exec shop bash -c 'cd /var/www/html/custom/plugins/SasBlogModule && make build'
+#    integration:
+#        name: Integration Tests | Shopware ${{ matrix.shopware }}
+#        runs-on: ubuntu-latest
+#        strategy:
+#            fail-fast: false
+#            matrix:
+#                shopware: [ '6.4.18.0', '6.4.17.0' ]
+#        steps:
+#
+#            - name: Clone Code
+#              uses: actions/checkout@v2
+#
+#            - name: Setup PHP
+#              uses: shivammathur/setup-php@v2
+#              with:
+#                  php-version: 7.4
+#
+#            - name: Install PROD Dependencies
+#              run: make install -B
+#
+#            - name: Start Docker
+#              run: |
+#                  docker run --rm --name shop -d dockware/dev:${{ matrix.shopware }}
+#                  sleep 30
+#                  docker logs shop
+#
+#            - name: Upload into Docker
+#              run: |
+#                  docker cp $(pwd)/. shop:/var/www/html/custom/plugins/SasBlogModule
+#                  docker exec shop bash -c 'sudo chown www-data:www-data /var/www/html/custom/plugins -R'
+#
+#            - name: Install and Build Plugin
+#              run: |
+#                  docker exec shop bash -c 'cd /var/www/html/custom/plugins/SasBlogModule && make clean'
+#                  docker exec shop bash -c 'cd /var/www/html/custom/plugins/SasBlogModule && make install'
+#                  docker exec shop bash -c 'cd /var/www/html/custom/plugins/SasBlogModule && make build'
 
     # ------------------------------------------------------------------------------------------------------------------------
 

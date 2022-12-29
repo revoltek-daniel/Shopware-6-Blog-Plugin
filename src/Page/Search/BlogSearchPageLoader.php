@@ -3,7 +3,7 @@
 namespace Sas\BlogModule\Page\Search;
 
 use Shopware\Core\Content\Category\Exception\CategoryNotFoundException;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Exception\InconsistentCriteriaIdsException;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Routing\Exception\MissingRequestParameterException;
@@ -19,11 +19,11 @@ class BlogSearchPageLoader
 
     private GenericPageLoaderInterface $genericLoader;
 
-    private EntityRepositoryInterface $blogRepository;
+    private EntityRepository $blogRepository;
 
     public function __construct(
         GenericPageLoaderInterface $genericLoader,
-        EntityRepositoryInterface $blogRepository
+        EntityRepository $blogRepository
     ) {
         $this->genericLoader = $genericLoader;
         $this->blogRepository = $blogRepository;

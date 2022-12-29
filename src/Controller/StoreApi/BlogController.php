@@ -3,28 +3,24 @@
 namespace Sas\BlogModule\Controller\StoreApi;
 
 use OpenApi\Annotations as OA;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\Plugin\Exception\DecorationPatternException;
 use Shopware\Core\Framework\Routing\Annotation\Entity;
-use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @RouteScope(scopes={"store-api"})
- */
 class BlogController extends AbstractBlogController
 {
     /**
-     * @var EntityRepositoryInterface
+     * @var EntityRepository
      */
     private $blogRepository;
 
-    public function __construct(EntityRepositoryInterface $blogRepository)
+    public function __construct(EntityRepository $blogRepository)
     {
         $this->blogRepository = $blogRepository;
     }
@@ -64,7 +60,7 @@ class BlogController extends AbstractBlogController
      *          )
      *     )
      * )
-     * @Route("/store-api/blog", name="store-api.sas.blog.load", methods={"GET","POST"})
+     * @Route("/store-api/blog", name="store-api.sas.blog.load", methods={"GET","POST"}, defaults={"_routeScope"={"store-api"}})
      */
     public function load(Request $request, Criteria $criteria, SalesChannelContext $context): BlogControllerResponse
     {

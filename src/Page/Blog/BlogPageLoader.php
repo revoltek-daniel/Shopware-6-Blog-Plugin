@@ -6,7 +6,7 @@ use Sas\BlogModule\Content\Blog\BlogEntriesEntity;
 use Shopware\Core\Content\Cms\CmsPageEntity;
 use Shopware\Core\Content\Cms\Exception\PageNotFoundException;
 use Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoaderInterface;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Exception\InconsistentCriteriaIdsException;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Routing\Exception\MissingRequestParameterException;
@@ -27,14 +27,14 @@ class BlogPageLoader
 
     private SalesChannelCmsPageLoaderInterface $cmsPageLoader;
 
-    private EntityRepositoryInterface $blogRepository;
+    private EntityRepository $blogRepository;
 
     public function __construct(
         SystemConfigService $systemConfigService,
         GenericPageLoaderInterface $genericLoader,
         EventDispatcherInterface $eventDispatcher,
         SalesChannelCmsPageLoaderInterface $cmsPageLoader,
-        EntityRepositoryInterface $blogRepository
+        EntityRepository $blogRepository
     ) {
         $this->systemConfigService = $systemConfigService;
         $this->genericLoader = $genericLoader;

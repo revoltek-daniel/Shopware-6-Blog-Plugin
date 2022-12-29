@@ -15,7 +15,7 @@ use Shopware\Core\Content\Category\Tree\Tree;
 use Shopware\Core\Content\Cms\CmsPageEntity;
 use Shopware\Core\Content\Cms\Exception\PageNotFoundException;
 use Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoaderInterface;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\EntitySearchResult;
 use Shopware\Core\Framework\Routing\Exception\MissingRequestParameterException;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
@@ -40,7 +40,7 @@ class BlogPageLoaderTest extends TestCase
 
     private EventDispatcherInterface $eventDispatcher;
 
-    private EntityRepositoryInterface $blogRepository;
+    private EntityRepository $blogRepository;
 
     private BlogPageLoader $blogPageLoader;
 
@@ -113,10 +113,11 @@ class BlogPageLoaderTest extends TestCase
         static::assertInstanceOf(BlogPage::class, $actualPage);
         static::assertSame($detailCmsPageId, $actualPage->getCmsPage()->getId());
 
-        static::assertObjectHasAttribute('blogEntry', $actualPage);
+
+        static::assertTrue(property_exists($actualPage, 'blogEntry'));
         static::assertInstanceOf(BlogEntriesEntity::class, $actualPage->getBlogEntry());
 
-        static::assertObjectHasAttribute('metaInformation', $actualPage);
+        static::assertTrue(property_exists($actualPage, 'metaInformation'));
         static::assertInstanceOf(MetaInformation::class, $actualPage->getMetaInformation());
         static::assertSame($metaInformation['metaTitle'], $actualPage->getMetaInformation()->getMetaTitle());
         static::assertSame($metaInformation['metaDescription'], $actualPage->getMetaInformation()->getMetaDescription());
@@ -135,7 +136,7 @@ class BlogPageLoaderTest extends TestCase
      * - expected number of event dispatches
      * - meta information
      */
-    public function getTestData(): array
+    public static function getTestData(): array
     {
         return [
             'test the article id is not set in the request' => [

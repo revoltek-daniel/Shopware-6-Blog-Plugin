@@ -4,11 +4,10 @@ namespace Sas\BlogModule\Controller;
 
 use Sas\BlogModule\Page\Blog\BlogPageLoader;
 use Sas\BlogModule\Page\Search\BlogSearchPageLoader;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\RangeFilter;
-use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\Framework\Routing\Exception\MissingRequestParameterException;
 use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Storefront\Controller\StorefrontController;
@@ -19,14 +18,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @RouteScope(scopes={"storefront"})
- */
 class BlogController extends StorefrontController
 {
     private GenericPageLoaderInterface $genericPageLoader;
 
-    private EntityRepositoryInterface $blogRepository;
+    private EntityRepository $blogRepository;
 
     private BlogPageLoader $blogPageLoader;
 
@@ -34,7 +30,7 @@ class BlogController extends StorefrontController
 
     public function __construct(
         GenericPageLoaderInterface $genericPageLoader,
-        EntityRepositoryInterface $blogRepository,
+        EntityRepository $blogRepository,
         BlogPageLoader $blogPageLoader,
         BlogSearchPageLoader $blogSearchPageLoader
     ) {
@@ -46,7 +42,7 @@ class BlogController extends StorefrontController
 
     /**
      * @HttpCache()
-     * @Route("/sas_blog/search", name="sas.frontend.blog.search", methods={"GET"})
+     * @Route("/sas_blog/search", name="sas.frontend.blog.search", methods={"GET"}, defaults={"_routeScope"={"storefront"}})
      */
     public function search(Request $request, SalesChannelContext $context): Response
     {
@@ -61,7 +57,7 @@ class BlogController extends StorefrontController
 
     /**
      * @HttpCache()
-     * @Route("/widgets/blog-search", name="widgets.blog.search.pagelet", methods={"GET", "POST"}, defaults={"XmlHttpRequest"=true})
+     * @Route("/widgets/blog-search", name="widgets.blog.search.pagelet", methods={"GET", "POST"}, defaults={"XmlHttpRequest"=true, "_routeScope"={"storefront"}})
      *
      * @throws MissingRequestParameterException
      */
@@ -79,7 +75,7 @@ class BlogController extends StorefrontController
 
     /**
      * @HttpCache()
-     * @Route("/sas_blog/{articleId}", name="sas.frontend.blog.detail", methods={"GET"})
+     * @Route("/sas_blog/{articleId}", name="sas.frontend.blog.detail", methods={"GET"}, defaults={"_routeScope"={"storefront"}})
      */
     public function detailAction(Request $request, SalesChannelContext $context): Response
     {
@@ -90,7 +86,7 @@ class BlogController extends StorefrontController
 
     /**
      * @HttpCache()
-     * @Route("/blog/rss", name="frontend.sas.blog.rss", methods={"GET"})
+     * @Route("/blog/rss", name="frontend.sas.blog.rss", methods={"GET"}, defaults={"_routeScope"={"storefront"}})
      */
     public function rss(Request $request, SalesChannelContext $context): Response
     {

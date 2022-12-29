@@ -5,7 +5,7 @@ namespace Sas\BlogModule\Content\BlogCategory;
 use Doctrine\DBAL\Connection;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\Dbal\Common\IteratorFactory;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Event\EntityWrittenContainerEvent;
 use Shopware\Core\Framework\DataAbstractionLayer\Indexing\ChildCountUpdater;
 use Shopware\Core\Framework\DataAbstractionLayer\Indexing\EntityIndexer;
@@ -43,7 +43,7 @@ class BlogCategoryIndexer extends EntityIndexer
     public function __construct(
         Connection $connection,
         IteratorFactory $iteratorFactory,
-        EntityRepositoryInterface $repository,
+        EntityRepository $repository,
         ChildCountUpdater $childCountUpdater,
         TreeUpdater $treeUpdater
     ) {
@@ -151,5 +151,15 @@ class BlogCategoryIndexer extends EntityIndexer
         $query->setParameter('version', Uuid::fromHexToBytes($versionId));
 
         return $query->execute()->fetchAll(\PDO::FETCH_COLUMN);
+    }
+
+    public function getTotal(): int
+    {
+        // TODO: Implement getTotal() method.
+    }
+
+    public function getDecorated(): EntityIndexer
+    {
+        // TODO: Implement getDecorated() method.
     }
 }
