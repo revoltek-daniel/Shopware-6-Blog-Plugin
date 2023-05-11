@@ -277,7 +277,7 @@ Component.extend('sas-blog-detail', 'sw-cms-detail', {
 
             return this.blogRepository.save(this.blog, Shopware.Context.api).then(() => {
                 this.isLoading = false;
-                this.$router.push({ name: 'blog.module.detail', params: { id: this.blog.id } });
+                this.$router.push({ name: 'blog.module.detail', params: { id: this.blog.id } }).catch(() => {});
 
                 return Promise.resolve();
             }).catch(exception => {
