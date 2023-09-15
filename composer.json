@@ -1,5 +1,5 @@
 {
-    "name": "me-sas/blog-module",
+    "name": "sas/blog-module",
     "description": "Blog Module",
     "version": "1.5.8",
     "type": "shopware-platform-plugin",
