@@ -142,9 +142,9 @@ class BlogPageLoader
      */
     private function loadBlogDetailCmsPage(Request $request, SalesChannelContext $context): CmsPageEntity
     {
-        $detailCmsPageId = $this->systemConfigService->get('SasBlogModule.config.cmsBlogDetailPage');
+        $detailCmsPageId = $this->systemConfigService->get('MeSasBlogModule.config.cmsBlogDetailPage');
         if (!$detailCmsPageId) {
-            throw new ConfigurationNotFoundException('SasBlogModule');
+            throw new ConfigurationNotFoundException('MeSasBlogModule');
         }
 
         $detailCmsPage = $this->cmsPageLoader->load($request, new Criteria([$detailCmsPageId]), $context)->first();

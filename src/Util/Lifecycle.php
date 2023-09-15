@@ -40,7 +40,7 @@ class Lifecycle
         $cmsPage = $this->createCmsPagesData($blogListingCmsPageId, $blogDetailCmsPageId);
 
         $this->cmsPageRepository->create($cmsPage, $context);
-        $this->systemConfig->set('SasBlogModule.config.cmsBlogDetailPage', $blogDetailCmsPageId);
+        $this->systemConfig->set('MeSasBlogModule.config.cmsBlogDetailPage', $blogDetailCmsPageId);
     }
 
     private function createCmsPagesData(string $blogListingCmsPageId, string $blogDetailCmsPageId): array

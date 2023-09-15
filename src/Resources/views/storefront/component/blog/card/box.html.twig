@@ -56,7 +56,7 @@
         {% block sas_blog_card_footer %}
         <div class="card-footer text-muted">
             {% block sas_blog_card_footer_author %}
-                {% if shopware.config.SasBlogModule.config.showAuthor %}
+                {% if shopware.config.MeSasBlogModule.config.showAuthor %}
                     {% if article.author.media.url %}
                         {% set attributes = {
                             'class': 'blog-author-avatar',

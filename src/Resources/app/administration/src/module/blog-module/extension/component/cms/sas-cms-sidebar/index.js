@@ -51,9 +51,9 @@ Component.extend('sas-cms-sidebar', 'sw-cms-sidebar', {
 
     methods: {
         createdComponent() {
-            this.systemConfigApiService.getValues('SasBlogModule.config').then(config => {
-                this.maximumMetaTitleCharacter = config['SasBlogModule.config.maximumMetaTitleCharacter'];
-                this.maximumMetaDescriptionCharacter = config['SasBlogModule.config.maximumMetaDescriptionCharacter'];
+            this.systemConfigApiService.getValues('MeSasBlogModule.config').then(config => {
+                this.maximumMetaTitleCharacter = config['MeSasBlogModule.config.maximumMetaTitleCharacter'];
+                this.maximumMetaDescriptionCharacter = config['MeSasBlogModule.config.maximumMetaDescriptionCharacter'];
             });
         },
 

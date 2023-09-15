@@ -80,7 +80,7 @@ function createWrapper(customOptions = {}) {
                 }),
             },
             systemConfigApiService: {
-                getValues: () => Promise.resolve('SasBlogModule.config')
+                getValues: () => Promise.resolve('MeSasBlogModule.config')
             }
         },
     };

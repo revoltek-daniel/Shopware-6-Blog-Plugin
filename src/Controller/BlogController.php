@@ -106,7 +106,7 @@ class BlogController extends StorefrontController
         $page = $this->genericPageLoader->load($request, $context);
         $page = NavigationPage::createFrom($page);
 
-        $response = $this->renderStorefront('@SasBlogModule/storefront/page/rss.html.twig', [
+        $response = $this->renderStorefront('@MeSasBlogModule/storefront/page/rss.html.twig', [
             'results' => $results,
             'page'    => $page,
         ]);

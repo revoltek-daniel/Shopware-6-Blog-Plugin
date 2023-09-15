@@ -56,7 +56,7 @@ class ProductSuggestDecorated extends AbstractProductSuggestRoute
     ): ProductSuggestRouteResponse {
         $response = $this->getDecorated()->load($request, $context, $criteria);
 
-        if (!$this->systemConfigService->get('SasBlogModule.config.enableSearchBox')) {
+        if (!$this->systemConfigService->get('MeSasBlogModule.config.enableSearchBox')) {
             return $response;
         }
 
