@@ -68,18 +68,17 @@ class BlogUrlProvider extends AbstractUrlProvider
         $urls = [];
 
         foreach ($blogEntities as $blogEntity) {
-            $blogUrl = new Url();
-            $blogUrl->setLastmod($blogEntity->getUpdatedAt() ?? new \DateTime());
-            $blogUrl->setChangefreq(self::CHANGE_FREQ);
-            $blogUrl->setPriority(self::PRIORITY);
-            $blogUrl->setResource(BlogEntriesEntity::class);
-            $blogUrl->setIdentifier($blogEntity->getId());
-
             if (isset($seoUrls[$blogEntity->getId()])) {
+                $blogUrl = new Url();
+                $blogUrl->setLastmod($blogEntity->getUpdatedAt() ?? new \DateTime());
+                $blogUrl->setChangefreq(self::CHANGE_FREQ);
+                $blogUrl->setPriority(self::PRIORITY);
+                $blogUrl->setResource(BlogEntriesEntity::class);
+                $blogUrl->setIdentifier($blogEntity->getId());
                 $blogUrl->setLoc($seoUrls[$blogEntity->getId()]['seo_path_info']);
-            }
 
-            $urls[] = $blogUrl;
+                $urls[] = $blogUrl;
+            }
         }
 
         return new UrlResult($urls, null);
