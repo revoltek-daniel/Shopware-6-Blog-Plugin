@@ -89,7 +89,9 @@ class BlogSearchPageLoader
         $criteria->setOffset($offset);
         $criteria->setTitle('blog-search-page');
         $criteria->setTotalCountMode(Criteria::TOTAL_COUNT_MODE_EXACT);
-
+        $criteria->addAssociations([
+                                       'blogCategories',
+                                   ]);
         return $criteria;
     }
 
