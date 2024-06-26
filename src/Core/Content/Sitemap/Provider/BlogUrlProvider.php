@@ -17,8 +17,8 @@ use Shopware\Core\System\SalesChannel\SalesChannelContext;
 
 class BlogUrlProvider extends AbstractUrlProvider
 {
-    public const CHANGE_FREQ = 'daily';
-    public const PRIORITY = 1.0;
+    public const CHANGE_FREQ = 'weekly';
+    public const PRIORITY = 0.5;
 
     private EntityRepository $blogRepository;
 
